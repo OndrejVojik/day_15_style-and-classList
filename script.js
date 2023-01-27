@@ -23,6 +23,7 @@ alerts.forEach((alert) => {
 
   const div = elementFromHTML(data_html);
   div.className = "alert";
+  div.classList.add("alert--error");
   div_alerts.appendChild(div);
 });
 
@@ -30,13 +31,12 @@ const alertElements = document.querySelectorAll(".alert");
 const closeElements = document.querySelectorAll(".alert__close");
 alertElements.forEach((alert) => {
   alert.addEventListener("click", () => {
-    alert.style.backgroundColor = "green";
-    alert.style.color = "white";
-  });
-  
-  (alert.children[1]).addEventListener("click", () => {
-    alert.style.display = "none";
+    // alert.style.backgroundColor = "green";
+    // alert.style.color = "white";
+    alert.classList.toggle("alert--seen");
   });
 
- 
+  alert.children[1].addEventListener("click", () => {
+    alert.style.display = "none";
+  });
 });
